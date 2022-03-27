@@ -85,7 +85,7 @@ def createComponents(src):
     appJSX = ("import "+i.capitalize()+" from \"./components/"+i+"/"+i.capitalize()+"\";\n")
 
     os.chdir(src+'\components')
-    os.mkdir(i.capitalize())
+    os.mkdir(i)
 
     os.chdir(src+'\components'+'\\'+i)
     with open(i.capitalize()+'.jsx', 'w') as f:
