@@ -20,7 +20,7 @@ def getData():
   # Get user input for package name
   packageName = input(f"{colors.INPUT}Enter Package Name: {colors.WHITE}")
   # Get user input for package component(s)
-  componentsInput = input(f"{colors.INPUT}Enter Component(s) ( Separate with spaces, auto capitalization ):\n {colors.WHITE}")
+  componentsInput = input(f"{colors.INPUT}Enter Component(s) ( Separate with spaces ):\n {colors.WHITE}")
   # Split componentsInput and add to components array
   components = componentsInput.split()
 
@@ -75,20 +75,20 @@ def getData():
 def createComponents(src):
   os.mkdir('components')
   for i in components:
-    compJSX = ("const "+i.capitalize()+" = () => {"
+    compJSX = ("const "+i+" = () => {"
     "\n\treturn ("
-    "\n\t\t<div>"+i.capitalize()+"</div>"
+    "\n\t\t<div>"+i+"</div>"
     "\n\t);"
     "\n};"
-    "\n\nexport default "+i.capitalize()+";")
+    "\n\nexport default "+i+";")
 
-    appJSX = ("import "+i.capitalize()+" from \"./components/"+i+"/"+i.capitalize()+"\";\n")
+    appJSX = ("import "+i+" from \"./components/"+i+"/"+i+"\";\n")
 
     os.chdir(src+'\components')
     os.mkdir(i)
 
     os.chdir(src+'\components'+'\\'+i)
-    with open(i.capitalize()+'.jsx', 'w') as f:
+    with open(i+'.jsx', 'w') as f:
       f.write(compJSX)
     with open(i+'.css', 'w') as f:
       f.write('')
@@ -111,7 +111,7 @@ def createComponents(src):
 
   for i in components:
     with open("App.jsx", "a") as f:
-      f.write("\t\t\t<"+i.capitalize()+" />\n")
+      f.write("\t\t\t<"+i+" />\n")
 
   with open("App.jsx", "a") as f:
     f.write("\t\t</>"
