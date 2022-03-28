@@ -60,8 +60,8 @@ def getData():
   with open('index.js', 'w') as f:
     f.write(js.text)
 
-  # If components are passed on init, create folder, sub folders, css and jsx files with functional components
-  # Once complete, generate App.jsx complete with imports and functional component returning all passed components
+  # If components are passed on init, create folder, sub folders, css and js files with functional components
+  # Once complete, generate App.js complete with imports and functional component returning all passed components
   if components:
     createComponents(srcDir)
 
@@ -75,27 +75,27 @@ def getData():
 def createComponents(src):
   os.mkdir('components')
   for i in components:
-    compJSX = ("const "+i+" = () => {"
+    compJS = ("const "+i+" = () => {"
     "\n\treturn ("
     "\n\t\t<div>"+i+"</div>"
     "\n\t);"
     "\n};"
     "\n\nexport default "+i+";")
 
-    appJSX = ("import "+i+" from \"./components/"+i+"/"+i+"\";\n")
+    appJS = ("import "+i+" from \"./components/"+i+"/"+i+"\";\n")
 
     os.chdir(src+'\components')
     os.mkdir(i)
 
     os.chdir(src+'\components'+'\\'+i)
-    with open(i+'.jsx', 'w') as f:
-      f.write(compJSX)
+    with open(i+'.js', 'w') as f:
+      f.write(compJS)
     with open(i+'.css', 'w') as f:
       f.write('')
 
     os.chdir(src)
-    with open('App.jsx', 'a') as f:
-      f.write(appJSX)
+    with open('App.js', 'a') as f:
+      f.write(appJS)
 
   appInsert = ("\nconst App = () => {"
     "\n\treturn ("
@@ -104,16 +104,16 @@ def createComponents(src):
     "\n\t);"
     "\n};"
     "\n\nexport default App;")
-  with open("App.jsx", 'a') as f:
+  with open("App.js", 'a') as f:
     f.write("\nconst App = () => {"
     "\n\treturn ("
     "\n\t\t<>\n")
 
   for i in components:
-    with open("App.jsx", "a") as f:
+    with open("App.js", "a") as f:
       f.write("\t\t\t<"+i+" />\n")
 
-  with open("App.jsx", "a") as f:
+  with open("App.js", "a") as f:
     f.write("\t\t</>"
     "\n\t);"
     "\n};"
