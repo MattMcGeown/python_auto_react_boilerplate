@@ -20,7 +20,7 @@ def getData():
   # Get user input for package name
   packageName = input(f"{colors.INPUT}Enter Package Name: {colors.WHITE}")
   # Get user input for package component(s)
-  componentsInput = input(f"{colors.INPUT}Enter Component(s) ( Separate with spaces ):\n {colors.WHITE}")
+  componentsInput = input(f"{colors.INPUT}Enter Component(s) ( Separate with spaces - Auto capitalization ):\n {colors.WHITE}")
   # Split componentsInput and add to components array
   components = componentsInput.split()
 
