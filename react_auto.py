@@ -69,7 +69,7 @@ def getData():
   # Launch VSCode
   os.system("code .")
   # Start React App
-  os.system("npm start")
+  # os.system("npm start")
 
 # This is a mess and needs a fix
 def createComponents(src):
