@@ -75,20 +75,20 @@ def getData():
 def createComponents(src):
   os.mkdir('components')
   for i in components:
-    compJS = ("const "+i+" = () => {"
+    compJS = ("const "+i.capitalize()+" = () => {"
     "\n\treturn ("
-    "\n\t\t<div>"+i+"</div>"
+    "\n\t\t<div>"+i.capitalize()+"</div>"
     "\n\t);"
     "\n};"
-    "\n\nexport default "+i+";")
+    "\n\nexport default "+i.capitalize()+";")
 
-    appJS = ("import "+i+" from \"./components/"+i+"/"+i+"\";\n")
+    appJS = ("import "+i.capitalize()+" from \"./components/"+i+"/"+i.capitalize()+"\";\n")
 
     os.chdir(src+'\components')
     os.mkdir(i)
 
     os.chdir(src+'\components'+'\\'+i)
-    with open(i+'.js', 'w') as f:
+    with open(i.capitalize()+'.jsx', 'w') as f:
       f.write(compJS)
     with open(i+'.css', 'w') as f:
       f.write('')
@@ -111,7 +111,7 @@ def createComponents(src):
 
   for i in components:
     with open("App.js", "a") as f:
-      f.write("\t\t\t<"+i+" />\n")
+      f.write("\t\t\t<"+i.capitalize()+" />\n")
 
   with open("App.js", "a") as f:
     f.write("\t\t</>"
