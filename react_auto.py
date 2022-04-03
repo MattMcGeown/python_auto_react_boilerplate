@@ -75,7 +75,8 @@ def getData():
 def createComponents(src):
   os.mkdir('components')
   for i in components:
-    compJS = ("const "+i.capitalize()+" = () => {"
+    compJS = ("import \"./"+i+".css\";"
+    "\n\nconst "+i.capitalize()+" = () => {"
     "\n\treturn ("
     "\n\t\t<div>"+i.capitalize()+"</div>"
     "\n\t);"
